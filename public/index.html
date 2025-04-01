@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Web</title>
+</head>
+<body>
+  <h1>Hello from Front-end!</h1>
+  <button id="getDataButton">Lấy dữ liệu từ Back-end</button>
+  <p id="dataDisplay"></p>
+
+  <script>
+    const getDataButton = document.getElementById('getDataButton');
+    const dataDisplay = document.getElementById('dataDisplay');
+
+    getDataButton.addEventListener('click', () => {
+      // Thay đổi URL để gọi đến cổng 5000
+      fetch('http://localhost:5000/api/data')
+        .then(response => response.json())
+        .then(data => {
+          dataDisplay.textContent = data.message;
+        });
+    });
+  </script>
+</body>
+</html>
